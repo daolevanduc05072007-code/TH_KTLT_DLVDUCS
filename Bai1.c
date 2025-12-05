@@ -7,6 +7,10 @@ int main()
     printf("Nhap bo ba 3 canh cua tam giac: ");
     scanf( "%lf %lf %lf" , &a[1], &a[2], &a[3] );
 
+    if ( a[1] <= 0 || a[2] <= 0 || a[3] <= 0 )
+        return 0;
+
+
     // ***SORT 3 SO NHANH GON LE*** // 
     for ( int i=1 ; i <= 2 ; i++)   
         for ( int j=i+1 ; j <= 3; j++ )
