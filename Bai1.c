@@ -1,21 +1,23 @@
 #include<stdio.h>
 #include<math.h>
+
+#define EPS 1e-9
 double a[5];
 
 int main()
 {
-    printf("Nhap bo ba 3 canh cua tam giac: ");
     scanf( "%lf %lf %lf" , &a[1], &a[2], &a[3] );
 
-    if ( a[1] <= 0 || a[2] <= 0 || a[3] <= 0 )
+    if ( a[1] <= EPS || a[2] <= EPS || a[3] <= EPS )
+    {
+        printf("KHONG TAO THANH TAM GIAC !!!");
         return 0;
+    }
 
-
-    // ***SORT 3 SO NHANH GON LE*** // 
     for ( int i=1 ; i <= 2 ; i++)   
         for ( int j=i+1 ; j <= 3; j++ )
         {
-            long long tmp = 0;
+            double tmp = 0;
             if ( a[i] > a[j] )
             {
                 tmp = a[i];
@@ -24,43 +26,42 @@ int main()
             }
         }
 
-    // ***FOR CHECK LAI SORT DUNG CHUA*** //
-    //for ( int i=1 ; i <= 3 ; i++)   
-        //printf( "%lld " , a[i]);
-
-    // **SUM 2 CANH BE > CANH LON*** //
-    if (  a[1] + a[2] > a[3] )
+    if ( a[1] + a[2] > a[3] + EPS )
     {
-        if ( a[1] == a[2] && a[2] == a[3] )
+        if ( fabs(a[1] - a[2]) < EPS && fabs(a[2] - a[3]) < EPS )
         {
             printf("TAM GIAC DEU");
             return 0;
         }
-        if ( a[1]*a[1] + a[2]*a[2] == a[3]*a[3]  )
+
+        if ( fabs(a[1]*a[1] + a[2]*a[2] - a[3]*a[3]) < EPS )
         {
-            if ( a[1] == a[2] || a[2] == a[3] )
+            if ( fabs(a[1] - a[2]) < EPS )
                 printf( "TAM GIAC VUONG CAN" );
             else
                 printf( "TAM GIAC VUONG" );
             return 0;
         }
-        if ( a[1]*a[1] + a[2]*a[2] < a[3]*a[3] ) 
+
+        if ( a[1]*a[1] + a[2]*a[2] < a[3]*a[3] - EPS ) 
         {
-            if ( a[1] == a[2] || a[2] == a[3]  )
+            if ( fabs(a[1] - a[2]) < EPS || fabs(a[2] - a[3]) < EPS )
                 printf("TAM GIAC TU CAN");
             else
                 printf("TAM GIAC TU");
         }
         else
         {
-            if ( a[1] == a[2]  )
+            if ( fabs(a[1] - a[2]) < EPS || fabs(a[2] - a[3]) < EPS )
                 printf("TAM GIAC NHON CAN");            
             else
                 printf("TAM GIAC NHON");
         }
-
-
     }
     else
+    {
         printf("KHONG TAO THANH TAM GIAC !!!");
+    }
+    
+    return 0;
 }
