@@ -20,7 +20,7 @@ double solve(double x)
         n++;
     }
     
-    printf("S = Cos(%lf) = %.6lf\n", x, sum);
+    printf("\nS = Cos(%lf) = %.6lf\n", x, sum);
     
     return sum;
 }
