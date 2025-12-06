@@ -59,6 +59,7 @@ long double cauc(long double a,int n) {
 }
 
 int main() {
+    int N;
     double n;
     long double a;
 
@@ -69,16 +70,16 @@ int main() {
         printf(" n phải là số nguyên (không chấp nhận số thập phân)!\n");
         return 0; 
     }
-    n = (int) n;
+    N = (int) n;
     
     //Câu a.
-    printf("Ket qua cau a:%Lf\n",caua(a,n));
+    printf("Ket qua cau a:%Lf\n",caua(a,N));
 
     //Câu b.
-    printf("Ket qua cau b:%Lf\n",caub(a,n));
+    printf("Ket qua cau b:%Lf\n",caub(a,N));
 
     //Câu c.
-    printf("Ket qua cau c:%Lf\n",cauc(a,n));
+    printf("Ket qua cau c:%Lf\n",cauc(a,N));
 
     return 0;
 }
