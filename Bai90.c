@@ -109,11 +109,16 @@ void tap_con( double a[] , double b[] , int m , int n , int name )
                 cnt++;
 
     if ( cnt == m && name == 1)
-        printf("A la tap con cua B\n");
+    {
+        if ( m == n )
+            printf("A va B la tap con cua nhau\n");
+        else
+            printf("A la tap con cua B\n");
+        return;
+    }
     if ( cnt == m && name == 2)
         printf("B la tap con cua A\n");
-    if ( m == n && cnt == m )
-        printf("A va B la tap con cua nhau\n");
+    
     return;
 }
 
