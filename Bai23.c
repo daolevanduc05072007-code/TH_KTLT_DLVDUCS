@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 long double caua(long double a,int n) {
     //trường hợp 0 mũ 9
@@ -59,18 +61,21 @@ long double cauc(long double a,int n) {
 }
 
 int main() {
+    char n[1000000];
     int N;
-    double n;
-    long double a;
-
-    printf("Nhập vào số thực a và số nguyên n:\n");
-    scanf("%Lf %lf",&a,&n);
-    if ( n != (long long)n ) 
+    double a;
+    printf("Nhập vào số thực a và số nguyên n:");
+    scanf("%lf %s",&a,&n);
+    for ( int i = 0 ; i < strlen(n) ; ++i )
     {
-        printf(" n phải là số nguyên (không chấp nhận số thập phân)!\n");
-        return 0; 
+        if ( n[i] == '.' )
+        {
+            printf("sai dinh dang so tu nhien !!");
+            return 0;
+        }
     }
-    N = (int) n;
+    
+    N = atoi(n);
     
     //Câu a.
     printf("Ket qua cau a:%Lf\n",caua(a,N));
